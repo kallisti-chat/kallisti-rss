@@ -586,3 +586,22 @@ These checks use synthetic content without live config, credentials, database mo
 Passed: synthetic release-input failure regression and Docker context checks; `make release-check`; example configuration and compatibility-binary comparison; Compose validation; Alpine image build; runtime UID/GID, CA and notice assertions; hardened network-disabled demo. The workflow did not publish an image or deploy.
 
 This receipt establishes hosted verification of that committed implementation, not future edits or the new uncommitted blueprint documentation. It does not establish required-check branch protection, production mount permissions or live upstream interoperability. Historical unrun rows above remain unchanged as records of earlier checks.
+
+## Go 1.27.4 and x/net v0.62.0
+
+On 2026-11-24 `make security` failed on the Go 1.27.3 pin: govulncheck v1.9.0 reported one called standard-library vulnerability, `GO-2026-6859` (net/http, fixed in Go 1.27.4), and two imported-but-not-called findings in `golang.org/x/net/html` v0.60.0 (`GO-2026-6866`, `GO-2026-6860`, fixed in v0.62.0). `go.mod` now requires Go 1.27.4 and x/net v0.62.0, and the build stage uses `golang:1.27.4-alpine3.24`. No other module version changed and no application source changed. The x/net LICENSE and PATENTS texts are byte-identical to v0.60.0; the bundled copies were renamed to the new version.
+
+Host: macOS arm64, Go 1.27.4, Docker available.
+
+| Check | Result |
+|---|---|
+| `make release-check` (aggregate target) | PASS, exit 0: vet, race tests (core coverage 84.2%, CLI 38.7%), build, fixture demo, 47,568 fuzz executions in the bounded run |
+| `make security` | PASS; govulncheck v1.9.0 "No vulnerabilities found"; gosec v2.30.0 zero issues, five existing suppressions |
+| Example config and binary byte comparison | PASS |
+| `scripts/test-release-input-failures.sh`, `scripts/check-release-inputs.sh` | PASS |
+| `scripts/check-deploy.sh` | PASS |
+| Docker build and hardened `--network=none --memory=512m --cpus=1` demo | PASS; pending=0, blocked=0, delivered=2; UID 65532, CA bundle, Go license and renamed x/net notice present; 27 license files |
+| `scripts/check-compose-runtime.sh` | NOT ESTABLISHED on this host: the script's ownership assertion uses GNU `stat -c`, which macOS `stat` rejects. The failure is in the check, not the service |
+| Hosted GitHub Actions on this change, Linux run of the Compose runtime check, live upstream interoperability | UNRUN |
+
+No live feed or account access, messages, credentials, push or deployment was performed.

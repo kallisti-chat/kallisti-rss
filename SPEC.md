@@ -111,7 +111,7 @@ Back up while stopped: preserve the whole data directory, any WAL/SHM files, con
 
 ## Build, fixtures and completion contract
 
-Use Go 1.27.3 or newer with the pinned module graph. The CGO-free binary embeds the pure-Go SQLite driver; normal operation still needs config, a secret file, writable local storage, CA trust and the external Kallisti/feed services. Initial builds/scans can download toolchains, modules and scanner data. Runtime tests use synthetic fixtures, not production accounts.
+Use Go 1.27.4 or newer with the pinned module graph. The CGO-free binary embeds the pure-Go SQLite driver; normal operation still needs config, a secret file, writable local storage, CA trust and the external Kallisti/feed services. Initial builds/scans can download toolchains, modules and scanner data. Runtime tests use synthetic fixtures, not production accounts.
 
 `make release-check` comprises `make check`, `make serve-demo`, `make fuzz` and `make security`. These run formatting verification, vet, race/unit/integration tests, native build, credential-free demo, ten-second parser fuzzing, govulncheck and gosec. Packaging additionally runs both scripts under `scripts/`, example-config validation, compatibility-binary comparison, Compose validation and an Alpine build with the hardened network-disabled demo. GitHub CI executes these underlying checks; it does not publish or deploy. Docker builder and runtime use Alpine 3.24, preserving UID/GID 65532, CA certificates and license notices.
 
