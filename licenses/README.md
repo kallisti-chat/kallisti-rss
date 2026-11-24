@@ -9,7 +9,7 @@ Modules compiled into the application; original license/notice files are preserv
 - github.com/ncruces/go-strftime v1.1.0: github.com_ncruces_go-strftime@v1.1.0_LICENSE
 - github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec: github.com_remyoudompheng_bigfft@v0.0.0-20230129092748-24d4a6f8daec_LICENSE
 - golang.org/x/image v0.46.0: golang.org_x_image@v0.46.0_LICENSE, golang.org_x_image@v0.46.0_PATENTS
-- golang.org/x/net v0.60.0: golang.org_x_net@v0.60.0_LICENSE, golang.org_x_net@v0.60.0_PATENTS
+- golang.org/x/net v0.62.0: golang.org_x_net@v0.62.0_LICENSE, golang.org_x_net@v0.62.0_PATENTS
 - golang.org/x/sys v0.49.0: golang.org_x_sys@v0.49.0_LICENSE, golang.org_x_sys@v0.49.0_PATENTS
 - google.golang.org/protobuf v1.36.12: google.golang.org_protobuf@v1.36.12_LICENSE, google.golang.org_protobuf@v1.36.12_PATENTS
 - gopkg.in/yaml.v3 v3.0.1: gopkg.in_yaml.v3@v3.0.1_LICENSE, gopkg.in_yaml.v3@v3.0.1_NOTICE

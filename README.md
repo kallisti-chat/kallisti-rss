@@ -14,7 +14,7 @@ Kallisti commit `d8fd12dd2a6f1483c8fdee187ebed827b3bd2efc`, not generic Murmur.
 
 ## Quick start: offline demo
 
-Requires Go 1.27.3 or newer on Linux or macOS. No running services are needed.
+Requires Go 1.27.4 or newer on Linux or macOS. No running services are needed.
 
 ```sh
 make check        # vet, unit/integration/race tests, static build
